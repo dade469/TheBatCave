@@ -1,0 +1,47 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBatCoreWebScrapper.TheBatConsole", "TheBatCoreWebScrapper.Console\TheBatCoreWebScrapper.TheBatConsole.csproj", "{01F833EB-B540-4E0E-AB44-AC755FB5E9E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBatCoreWebScrapper.Core", "TheBatCoreWebScrapper.Core\TheBatCoreWebScrapper.Core.csproj", "{C3703AEA-10F8-4848-9199-6741A4869958}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBatCoreWebScrapper.Notifier", "TheBatCoreWebScrapper.Notifier\TheBatCoreWebScrapper.Notifier.csproj", "{542D567D-BFD8-407C-AF80-A1ABD6B130FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBatCoreWebScrapper.DAL", "TheBatCoreWebScrapper.DAL\TheBatCoreWebScrapper.DAL.csproj", "{F5F8D1A6-2419-4C1F-A788-091137A8D941}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBatCoreWebScrapper.Test", "TheBatCoreWebScrapper.Test\TheBatCoreWebScrapper.Test.csproj", "{0A9F6C13-194B-4A6D-8D92-D842B39EDDC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBatCoreWebScrapper.API", "TheBatCoreWebScrapper.API\TheBatCoreWebScrapper.API.csproj", "{5E055F80-3E1C-4A84-A222-D2C61BDFECA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01F833EB-B540-4E0E-AB44-AC755FB5E9E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01F833EB-B540-4E0E-AB44-AC755FB5E9E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01F833EB-B540-4E0E-AB44-AC755FB5E9E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01F833EB-B540-4E0E-AB44-AC755FB5E9E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3703AEA-10F8-4848-9199-6741A4869958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3703AEA-10F8-4848-9199-6741A4869958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3703AEA-10F8-4848-9199-6741A4869958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3703AEA-10F8-4848-9199-6741A4869958}.Release|Any CPU.Build.0 = Release|Any CPU
+		{542D567D-BFD8-407C-AF80-A1ABD6B130FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542D567D-BFD8-407C-AF80-A1ABD6B130FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542D567D-BFD8-407C-AF80-A1ABD6B130FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542D567D-BFD8-407C-AF80-A1ABD6B130FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5F8D1A6-2419-4C1F-A788-091137A8D941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5F8D1A6-2419-4C1F-A788-091137A8D941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5F8D1A6-2419-4C1F-A788-091137A8D941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5F8D1A6-2419-4C1F-A788-091137A8D941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9F6C13-194B-4A6D-8D92-D842B39EDDC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9F6C13-194B-4A6D-8D92-D842B39EDDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9F6C13-194B-4A6D-8D92-D842B39EDDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9F6C13-194B-4A6D-8D92-D842B39EDDC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E055F80-3E1C-4A84-A222-D2C61BDFECA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E055F80-3E1C-4A84-A222-D2C61BDFECA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E055F80-3E1C-4A84-A222-D2C61BDFECA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E055F80-3E1C-4A84-A222-D2C61BDFECA1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
