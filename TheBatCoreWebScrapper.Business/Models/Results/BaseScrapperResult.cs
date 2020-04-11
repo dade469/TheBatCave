@@ -1,4 +1,4 @@
-namespace TheBatCoreWebScrapper.Core.Models.Results
+namespace TheBatCoreWebScrapper.Business.Models.Results
 {
     public class BaseScrapperResult
     {

@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TheBatCoreWebScrapper.Business\TheBatCoreWebScrapper.Business.csproj" />
     <ProjectReference Include="..\TheBatCoreWebScrapper.Core\TheBatCoreWebScrapper.Core.csproj" />
   </ItemGroup>
 

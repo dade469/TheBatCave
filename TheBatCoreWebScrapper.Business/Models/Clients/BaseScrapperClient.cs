@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Net.Http;
-using TheBatCoreWebScrapper.Core.Models.Results;
+using TheBatCoreWebScrapper.Business.Models.Results;
 
-namespace TheBatCoreWebScrapper.Core.Models.Clients
+namespace TheBatCoreWebScrapper.Business.Models.Clients
 {
     public class BaseScrapperClient
     {

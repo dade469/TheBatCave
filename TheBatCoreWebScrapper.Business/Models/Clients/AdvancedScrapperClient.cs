@@ -2,10 +2,10 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using PuppeteerSharp;
-using TheBatCoreWebScrapper.Core.Models.Results;
+using TheBatCoreWebScrapper.Business.Models.Results;
 using TheBatCoreWebScrapper.Notifier;
 
-namespace TheBatCoreWebScrapper.Core.Models.Clients
+namespace TheBatCoreWebScrapper.Business.Models.Clients
 {
     public class AdvancedScrapperClient
     {

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Sources;
 using System.Timers;
 using PuppeteerSharp.Helpers;
-using TheBatCoreWebScrapper.Core.Models;
-using TheBatCoreWebScrapper.Core.Models.Clients;
-using TheBatCoreWebScrapper.Core.Models.Results;
+using TheBatCoreWebScrapper.Business.Models;
+using TheBatCoreWebScrapper.Business.Models.Clients;
+using TheBatCoreWebScrapper.Business.Models.Results;
 using TheBatCoreWebScrapper.Notifier;
 
 namespace TheBatCoreWebScrapper.TheBatConsole
