@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TheBatCoreWebScrapper.Business.Services;
+using TheBatCoreWebScrapper.Core.Infrastructure;
+using TheBatCoreWebScrapper.DAL;
 
 namespace TheBatCoreWebScrapper.API.Controllers
 {
@@ -17,23 +21,22 @@ namespace TheBatCoreWebScrapper.API.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ScrapperContext _context;
+        
+        public ScrapperService _scrapperService { get; set; }
+        
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ScrapperService scrapperService)
         {
             _logger = logger;
+            _scrapperService = scrapperService;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public void Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            
+           _scrapperService.InitializeScrapper();
         }
     }
 }
