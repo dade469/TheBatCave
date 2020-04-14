@@ -14,10 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Business" />
-    </ItemGroup>
-
-    <ItemGroup>
+      <ProjectReference Include="..\TheBatCoreWebScrapper.DAL\TheBatCoreWebScrapper.DAL.csproj" />
       <ProjectReference Include="..\TheBatCoreWebScrapper.Notifier\TheBatCoreWebScrapper.Notifier.csproj" />
     </ItemGroup>
 

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Sources;
 using System.Timers;
 using PuppeteerSharp.Helpers;
+using TheBatCoreWebScrapper.Business.Business;
 using TheBatCoreWebScrapper.Business.Models;
 using TheBatCoreWebScrapper.Business.Models.Clients;
 using TheBatCoreWebScrapper.Business.Models.Results;
+using TheBatCoreWebScrapper.DAL;
 using TheBatCoreWebScrapper.Notifier;
 
 namespace TheBatCoreWebScrapper.TheBatConsole
@@ -44,30 +46,48 @@ namespace TheBatCoreWebScrapper.TheBatConsole
 
             #region Multi thread implementation
 
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            // TaskGenerator(_testUrl);
+            // Stopwatch stopwatch = new Stopwatch();
+            // stopwatch.Start();
+            // // TaskGenerator(_testUrl);
+            // // stopwatch.Stop();
+            // // Console.WriteLine("Normal way");
+            // // Console.WriteLine($"Elapsed time:{stopwatch.ElapsedMilliseconds}");
+            // // Console.WriteLine($"Total number of cycle:{_numberOfCycle}");
+            // // Console.WriteLine($"Total number of failed cycle:{_scrappingResult.Count(item => !item.IsSucces)}");
+            // // _scrappingResult = new List<AdvancedScrapperResult>();
+            // //stopwatch.Restart();
+            // TaskParallelBecero();
             // stopwatch.Stop();
-            // Console.WriteLine("Normal way");
+            // Console.WriteLine("Piemped way");
             // Console.WriteLine($"Elapsed time:{stopwatch.ElapsedMilliseconds}");
             // Console.WriteLine($"Total number of cycle:{_numberOfCycle}");
             // Console.WriteLine($"Total number of failed cycle:{_scrappingResult.Count(item => !item.IsSucces)}");
-            // _scrappingResult = new List<AdvancedScrapperResult>();
-            //stopwatch.Restart();
-            TaskParallelBecero();
-            stopwatch.Stop();
-            Console.WriteLine("Piemped way");
-            Console.WriteLine($"Elapsed time:{stopwatch.ElapsedMilliseconds}");
-            Console.WriteLine($"Total number of cycle:{_numberOfCycle}");
-            Console.WriteLine($"Total number of failed cycle:{_scrappingResult.Count(item => !item.IsSucces)}");
 
             #endregion
 
             //Notifier.MessageSender k = new MessageSender();
 
             // k.SendMessage();
-            _messageSender.SendMessage("Lettura finita");
-            Console.ReadLine();
+            //_messageSender.SendMessage("Lettura finita");
+            using (var context = new ScrapperContext())
+            {
+                ScrapperFactory fac = new ScrapperFactory(context);
+                fac.StartOperation();
+                
+                // ComparerFactory cmp = new ComparerFactory(context);
+                // cmp.StartOperation();
+                // var urlList = context.UrlLibraries.Select(item=>item.Url).ToList();
+                //
+                // BaseScrapperClient client = new BaseScrapperClient();
+                // foreach (var url in urlList)
+                // {
+                //     // var l = client.GetContent(url);
+                //     // Console.WriteLine(l.BodyContent);
+                // }
+                Console.ReadLine();
+            }
+
+          
         }
 
         /// <summary>

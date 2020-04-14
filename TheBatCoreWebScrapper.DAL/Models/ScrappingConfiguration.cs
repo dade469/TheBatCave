@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace TheBatCoreWebScrapper.DAL.Models
 {
     /// <summary>
@@ -15,5 +17,8 @@ namespace TheBatCoreWebScrapper.DAL.Models
         public UrlLibrary UrlLibrary { get; set; }
 
         public int Interval { get; set; }
+        
+        [InverseProperty("Configuration")]
+        public ScrappingResult ScrappingResult { get; set; }
     }
 }

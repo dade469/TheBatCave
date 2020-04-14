@@ -49,12 +49,19 @@ namespace TheBatCoreWebScrapper.DAL.Migrations
                     b.Property<string>("BodyResult")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ConfigurationScrappingConfigurationId")
+                    b.Property<string>("BodyUnchanged")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasChanged")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ScrappingConfigurationId")
                         .HasColumnType("int");
 
                     b.HasKey("ScrappingResultId");
 
-                    b.HasIndex("ConfigurationScrappingConfigurationId");
+                    b.HasIndex("ScrappingConfigurationId")
+                        .IsUnique();
 
                     b.ToTable("ScrappingResults");
                 });
@@ -84,8 +91,10 @@ namespace TheBatCoreWebScrapper.DAL.Migrations
             modelBuilder.Entity("TheBatCoreWebScrapper.DAL.Models.ScrappingResult", b =>
                 {
                     b.HasOne("TheBatCoreWebScrapper.DAL.Models.ScrappingConfiguration", "Configuration")
-                        .WithMany()
-                        .HasForeignKey("ConfigurationScrappingConfigurationId");
+                        .WithOne("ScrappingResult")
+                        .HasForeignKey("TheBatCoreWebScrapper.DAL.Models.ScrappingResult", "ScrappingConfigurationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

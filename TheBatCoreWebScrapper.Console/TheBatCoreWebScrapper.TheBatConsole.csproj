@@ -8,6 +8,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TheBatCoreWebScrapper.Business\TheBatCoreWebScrapper.Business.csproj" />
     <ProjectReference Include="..\TheBatCoreWebScrapper.Core\TheBatCoreWebScrapper.Core.csproj" />
+    <ProjectReference Include="..\TheBatCoreWebScrapper.DAL\TheBatCoreWebScrapper.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
