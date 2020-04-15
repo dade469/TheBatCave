@@ -69,23 +69,23 @@ namespace TheBatCoreWebScrapper.TheBatConsole
 
             // k.SendMessage();
             //_messageSender.SendMessage("Lettura finita");
-            using (var context = new ScrapperContext())
-            {
-                ScrapperFactory fac = new ScrapperFactory(context);
-                fac.StartOperation();
-                
-                // ComparerFactory cmp = new ComparerFactory(context);
-                // cmp.StartOperation();
-                // var urlList = context.UrlLibraries.Select(item=>item.Url).ToList();
-                //
-                // BaseScrapperClient client = new BaseScrapperClient();
-                // foreach (var url in urlList)
-                // {
-                //     // var l = client.GetContent(url);
-                //     // Console.WriteLine(l.BodyContent);
-                // }
-                Console.ReadLine();
-            }
+            // using (var context = new ScrapperContext())
+            // {
+            //     ScrapperFactory fac = new ScrapperFactory(context);
+            //     fac.StartOperation();
+            //     
+            //     // ComparerFactory cmp = new ComparerFactory(context);
+            //     // cmp.StartOperation();
+            //     // var urlList = context.UrlLibraries.Select(item=>item.Url).ToList();
+            //     //
+            //     // BaseScrapperClient client = new BaseScrapperClient();
+            //     // foreach (var url in urlList)
+            //     // {
+            //     //     // var l = client.GetContent(url);
+            //     //     // Console.WriteLine(l.BodyContent);
+            //     // }
+            //     Console.ReadLine();
+            // }
 
           
         }

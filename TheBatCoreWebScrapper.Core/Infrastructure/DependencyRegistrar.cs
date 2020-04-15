@@ -17,7 +17,7 @@ namespace TheBatCoreWebScrapper.Core.Infrastructure
         public static void Register(ContainerBuilder builder)
         {
             //Register DbContext
-            builder.RegisterType<ScrapperContext>().InstancePerLifetimeScope();
+            //builder.RegisterType<ScrapperContext>().InstancePerLifetimeScope();
             builder.RegisterType<ScrapperService>().InstancePerLifetimeScope().PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies);
         }
 

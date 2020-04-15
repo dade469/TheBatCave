@@ -2,18 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using TheBatCoreWebScrapper.DAL.Models;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace TheBatCoreWebScrapper.DAL
 {
     public class ScrapperContext : DbContext
     {
+        public ScrapperContext(DbContextOptions<ScrapperContext> options)
+            : base(options)
+        {
+        }
+
         public DbSet<ScrappingResult> ScrappingResults { get; set; }
         public DbSet<UrlLibrary> UrlLibraries { get; set; }
         public DbSet<ScrappingConfiguration> ScrappingConfigurations { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=localhost,1401;Database=ScrapperDB;User Id=sa;Password=Isis2018;");
-        }
+        
     }
 }

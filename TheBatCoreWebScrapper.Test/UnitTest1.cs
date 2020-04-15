@@ -17,13 +17,13 @@ namespace TheBatCoreWebScrapper.Test
         [Test]
         public void Test1()
         {
-            using (var context = new ScrapperContext())
-            {
-                context.UrlLibraries.Add(new UrlLibrary() {Url = "http://www.cephei.com"});
-                context.ScrappingConfigurations.Add(new ScrappingConfiguration(){Interval = 1, UrlLibrary = context.UrlLibraries.First()});
-                //context.ScrappingResults.Add(new ScrappingResult{BodyResult = "", UrlLibrary = new UrlLibrary{Url = "http://www.google.com"}});
-                context.SaveChanges();
-            }
+            // using (var context = new ScrapperContext())
+            // {
+            //     context.UrlLibraries.Add(new UrlLibrary() {Url = "http://www.cephei.com"});
+            //     context.ScrappingConfigurations.Add(new ScrappingConfiguration(){Interval = 1, UrlLibrary = context.UrlLibraries.First()});
+            //     //context.ScrappingResults.Add(new ScrappingResult{BodyResult = "", UrlLibrary = new UrlLibrary{Url = "http://www.google.com"}});
+            //     context.SaveChanges();
+            // }
         }
     }
 }          
