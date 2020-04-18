@@ -1,21 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TheBatCoreWebScrapper.Business.Services;
-using TheBatCoreWebScrapper.Core.Infrastructure;
+using Microsoft.OpenApi.Models;
+using TheBatCoreWebScrapper.Business.Models.Clients;
 using TheBatCoreWebScrapper.DAL;
+
 
 namespace TheBatCoreWebScrapper.API
 {
@@ -29,8 +23,6 @@ namespace TheBatCoreWebScrapper.API
         }
 
         public IConfiguration Configuration { get; }
-        
-        public ILifetimeScope AutofacContainer { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -38,11 +30,17 @@ namespace TheBatCoreWebScrapper.API
             services.AddDbContext<ScrapperContext>(optionsBuilder =>
                 optionsBuilder
                     .UseSqlServer(Configuration.GetConnectionString("ScrapperDatabase"),
-                        providerOptions => providerOptions.CommandTimeout(60)));
-                // .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
-            
-            // //services.AddDbContext<ScrapperContext>();
+                        providerOptions => providerOptions.CommandTimeout(60)),
+                ServiceLifetime.Transient,ServiceLifetime.Transient);
+
             services.AddControllers();
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+            });
+
+            //services.AddHostedService<ScrapperFactory>();
         }
         
         // ConfigureContainer is where you can register things directly
@@ -61,6 +59,13 @@ namespace TheBatCoreWebScrapper.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
+            app.UseSwagger();
+            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -72,10 +77,10 @@ namespace TheBatCoreWebScrapper.API
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller}/{action}"));
+
         }
     }
 }

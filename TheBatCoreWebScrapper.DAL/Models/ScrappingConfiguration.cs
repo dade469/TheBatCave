@@ -18,6 +18,8 @@ namespace TheBatCoreWebScrapper.DAL.Models
 
         public int Interval { get; set; }
         
+        public bool ScrappingEnabled { get; set; }
+        
         [InverseProperty("Configuration")]
         public ScrappingResult ScrappingResult { get; set; }
     }

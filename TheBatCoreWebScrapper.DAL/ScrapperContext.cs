@@ -13,6 +13,9 @@ namespace TheBatCoreWebScrapper.DAL
         {
         }
 
+        public ScrapperContext()
+        {
+        }
         public DbSet<ScrappingResult> ScrappingResults { get; set; }
         public DbSet<UrlLibrary> UrlLibraries { get; set; }
         public DbSet<ScrappingConfiguration> ScrappingConfigurations { get; set; }

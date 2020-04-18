@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 
@@ -20,5 +21,7 @@ namespace TheBatCoreWebScrapper.DAL.Models
         public ScrappingConfiguration Configuration { get; set; }
 
         public bool HasChanged { get; set; }
+        
+        public DateTime LastUpdate { get; set; }
     }
 }
