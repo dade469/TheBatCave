@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using TheBatCoreWebScrapper.Business.Services;
+using TheBatCoreWebScrapper.DTO;
 
 namespace TheBatCoreWebScrapper.API.Controllers
 {
@@ -6,29 +9,31 @@ namespace TheBatCoreWebScrapper.API.Controllers
     [Route("[controller]")]
     public class UrlLibraryController : ControllerBase
     {
+        private readonly UrlLibraryService _urlLibraryService;
+        public UrlLibraryController(UrlLibraryService urlLibraryService)
+        {
+            _urlLibraryService = urlLibraryService;
+        }
         [HttpPost]
-        public void PostUrl()
+        [ActionName("Momdsds")]
+
+        public void PostUrl(UrlLibraryDTO urlLibraryDTO)
         {
+            _urlLibraryService.AddUrlToLibrary(urlLibraryDTO);
         }
-        
+
         [HttpGet]
-        public void GetUrlInfo(int ulrId)
+        [ActionName("rere")]
+
+        public List<UrlLibraryDTO> GetAllUrls()
         {
-        }
-        
-        [HttpGet]
-        public void GetUrlLibrary()
-        {
+            return _urlLibraryService.GetAll();
         }
         
         [HttpPut]
-        public void PutUrlInfo(int urlId)
+        public void PutUrl(UrlLibraryDTO urlLibraryDTO)
         {
-        }
-        
-        [HttpPut]
-        public void PutUrlLibrary()
-        {
+             _urlLibraryService.UpdateUrlConfiguration(urlLibraryDTO);
         }
     }
 }

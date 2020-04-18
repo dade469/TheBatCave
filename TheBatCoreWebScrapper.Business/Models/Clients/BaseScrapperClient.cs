@@ -12,61 +12,51 @@ namespace TheBatCoreWebScrapper.Business.Models.Clients
 {
     public class BaseScrapperClient
     {
-        public BaseScrapperClient()
+        private string _url { get; set; }
+        private Timer _clock { get; set; }
+        private int _resultId { get; set; }
+        private int _interval { get; set; }
+        private BodyComparer _comparer { get; set; }
+        private ScrapperContext _context { get; set; }
+        
+        public int ConfigurationId { get; set; }
+        
+        public BaseScrapperClient(ScrapperContext context, BodyComparer
+            comparer, string url, int resultId, int interval, int configurationId)
         {
+            _comparer = comparer;
+            _url = url;
+            _resultId = resultId;
+            _context = context;
+            _interval = interval;
+            ConfigurationId = configurationId;
+            Initialize();
         }
 
-        public BaseScrapperClient(ScrappingConfiguration configuration, ScrapperContext context, BodyComparer
-            comparer)
+        public void Initialize()
         {
-            Comparer = comparer;
-            Configuration = configuration;
-            Url = configuration.UrlLibrary.Url;
-            if (configuration.ScrappingResult != null)
-                ResultId = configuration.ScrappingResult.ScrappingResultId;
-            
-            Context = context;
-
-            Clock = new Timer();
-            Clock.Interval = configuration.Interval;
-            Clock.Elapsed += ClockOnElapsed;
+            _clock = new Timer();
+            _clock.Interval = _interval;
+            _clock.Elapsed += ClockOnElapsed;
         }
 
         public void StartScrapping()
         {
-            if (!ResultId.HasValue)
-            {
-                Context.Add(new ScrappingResult {ScrappingConfigurationId = Configuration.ScrappingConfigurationId});
-                Context.SaveChanges();
-                ResultId = Context.ScrappingResults
-                    .Single(item => item.ScrappingConfigurationId == Configuration.ScrappingConfigurationId)
-                    .ScrappingResultId;
-            }
-
-            Clock.Start();
+            _clock.Start();
         }
-
-
+        
         public void StopScrapping()
         {
-            Clock.Stop();
+            _clock.Stop();
         }
 
         private void ClockOnElapsed(object sender, ElapsedEventArgs e)
         {
-            Clock.Stop();
+            _clock.Stop();
             GetContent();
-            Clock.Start();
+            _clock.Start();
         }
 
-        public ScrappingConfiguration Configuration { get; set; }
-        public string Url { get; set; }
-        public Timer Clock { get; set; }
-        public int? ResultId { get; set; }
-        
-        public BodyComparer Comparer { get; set; }
-
-        public ScrapperContext Context { get; set; }
 
         public void GetContent()
         {
@@ -74,7 +64,7 @@ namespace TheBatCoreWebScrapper.Business.Models.Clients
             using (var httpClient = new HttpClient())
             {
                 //_httpClient.BaseAddress = new Uri(url);
-                var response = httpClient.GetAsync(Url).Result;
+                var response = httpClient.GetAsync(_url).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     result.IsSucces = true;
@@ -87,18 +77,20 @@ namespace TheBatCoreWebScrapper.Business.Models.Clients
             {
                 try
                 {
-                    var l = Context.ScrappingResults.Single(item => item.ScrappingResultId == ResultId);
+                    var l = _context.ScrappingResults.Single(item => item.ScrappingResultId == _resultId);
                     l.BodyResult =   result.BodyContent;
+                    l.LastUpdate = DateTime.Now;
+                    
                     if (l.BodyResult != l.BodyUnchanged)
                     {
                         l.HasChanged = true;
-                        Comparer.Compare();
+                        _comparer.Compare(_resultId);
                     }
                     else
                     {
                         l.HasChanged = false;
                     }
-                    Context.SaveChanges();
+                    _context.SaveChanges();
                 }
                 catch (Exception e)
                 {

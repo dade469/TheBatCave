@@ -29,6 +29,9 @@ namespace TheBatCoreWebScrapper.DAL.Migrations
                     b.Property<int>("Interval")
                         .HasColumnType("int");
 
+                    b.Property<bool>("ScrappingEnabled")
+                        .HasColumnType("bit");
+
                     b.Property<int?>("UrlLibraryId")
                         .HasColumnType("int");
 
@@ -54,6 +57,9 @@ namespace TheBatCoreWebScrapper.DAL.Migrations
 
                     b.Property<bool>("HasChanged")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastUpdate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ScrappingConfigurationId")
                         .HasColumnType("int");

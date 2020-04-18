@@ -1,0 +1,2 @@
+//"ScrapperDatabase": "Server=localhost,1401;Database=ScrapperDB;User Id=sa;Password=Isis2018;"
+//    "ScrapperDatabase": "Server=62.149.153.63;initial catalog=MSSql171980;persist security info=True;user id=MSSql171980;password=25180n6012;MultipleActiveResultSets=True;"
