@@ -17,7 +17,7 @@ namespace TheBatCoreWebScrapper.API
     {
         public Startup(IConfiguration configuration)
         {
-            
+            //moino
             Configuration = configuration;
             
         }
